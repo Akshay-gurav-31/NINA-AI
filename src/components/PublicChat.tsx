@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -142,11 +141,11 @@ User: ${userMessage}`;
               </div>
               <div>
                 <h1 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
-                  Eliza AI - Public Chat
+                  Eliza AI
                 </h1>
                 <p className="text-sm text-gray-600 flex items-center">
-                  <Users className="w-3 h-3 mr-1" />
-                  Everyone can see this conversation
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                  Active
                 </p>
               </div>
             </div>
@@ -171,10 +170,10 @@ User: ${userMessage}`;
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                Public Chat! 💋
+                Chat with Eliza! 💋
               </h3>
               <p className="text-gray-600">
-                Ask anything about relationships, intimacy, or sexual health. Everyone can see the conversation!
+                Ask anything about relationships, intimacy, or sexual health.
               </p>
             </div>
           )}
@@ -262,9 +261,6 @@ User: ${userMessage}`;
               <Send className="w-4 h-4" />
             </Button>
           </div>
-          <p className="text-xs text-center text-gray-500 mt-2">
-            🔒 This is a public chat - all messages are visible to everyone
-          </p>
         </div>
       </div>
     </div>

@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Send, LogOut, Users, Sparkles } from 'lucide-react';
-import { toast } from '@/hooks/use-toast';
 
 interface ChatMessage {
   id: string;
@@ -32,7 +31,7 @@ const PublicChat = ({ onLogout, apiKey }: PublicChatProps) => {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  // Load existing chat messages (simulate from local storage)
+  // Load existing chat messages from localStorage
   useEffect(() => {
     const savedMessages = localStorage.getItem('elizaPublicChat');
     if (savedMessages) {
@@ -49,7 +48,7 @@ const PublicChat = ({ onLogout, apiKey }: PublicChatProps) => {
     setMessages(updatedMessages);
     localStorage.setItem('elizaPublicChat', JSON.stringify(updatedMessages));
     
-    // Also save to simulated text file format
+    // Save to text file format
     const chatLogEntry = `[${newMessage.timestamp}] USER: ${newMessage.user}\n[${newMessage.timestamp}] ELIZA: ${newMessage.eliza}\n`;
     const existingLog = localStorage.getItem('elizaChatLog') || '';
     localStorage.setItem('elizaChatLog', existingLog + chatLogEntry);
@@ -172,7 +171,7 @@ User: ${userMessage}`;
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                Welcome to Public Chat! 💋
+                Public Chat! 💋
               </h3>
               <p className="text-gray-600">
                 Ask anything about relationships, intimacy, or sexual health. Everyone can see the conversation!

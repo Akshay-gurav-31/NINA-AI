@@ -1,39 +1,26 @@
 
 import { useState } from 'react';
 import EntryGate from '@/components/EntryGate';
-import ApiKeySetup from '@/components/ApiKeySetup';
 import PublicChat from '@/components/PublicChat';
 
-type AppState = 'entry' | 'api-setup' | 'chat';
+type AppState = 'entry' | 'chat';
 
 const Index = () => {
   const [appState, setAppState] = useState<AppState>('entry');
-  const [apiKey, setApiKey] = useState('');
+  
+  // Direct API key integration
+  const apiKey = 'AIzaSyD0ob8GO26DNiK0e3wgd0u5deOTdK37_ig';
 
   const handleAccessGranted = () => {
-    setAppState('api-setup');
-  };
-
-  const handleApiKeySet = (key: string) => {
-    setApiKey(key);
     setAppState('chat');
   };
 
   const handleLogout = () => {
     setAppState('entry');
-    setApiKey('');
-  };
-
-  const handleBackToEntry = () => {
-    setAppState('entry');
   };
 
   if (appState === 'entry') {
     return <EntryGate onAccessGranted={handleAccessGranted} />;
-  }
-
-  if (appState === 'api-setup') {
-    return <ApiKeySetup onApiKeySet={handleApiKeySet} onBack={handleBackToEntry} />;
   }
 
   return <PublicChat onLogout={handleLogout} apiKey={apiKey} />;

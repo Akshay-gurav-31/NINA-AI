@@ -19,10 +19,10 @@ const EntryGate = ({ onAccessGranted }: EntryGateProps) => {
     setIsLoading(true);
     
     setTimeout(() => {
-      if (password === 'FUCKINGLOVE') {
+      if (password === 'FUCKYOUBABY') {
         toast({
           title: "Access Granted",
-          description: "Welcome to Eliza AI! 💋"
+          description: "Welcome to Lustina AI! 💋"
         });
         onAccessGranted();
       } else {
@@ -44,7 +44,7 @@ const EntryGate = ({ onAccessGranted }: EntryGateProps) => {
           <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center mx-auto mb-4">
             <Heart className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Eliza AI</h1>
+          <h1 className="text-3xl font-bold text-white mb-2">Lustina AI</h1>
           <p className="text-pink-200">Enter access code to continue</p>
         </div>
         

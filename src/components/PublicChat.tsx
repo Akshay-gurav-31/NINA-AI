@@ -54,7 +54,7 @@ const PublicChat = ({ onLogout, apiKey }: PublicChatProps) => {
   };
 
   const generateElizaResponse = async (userMessage: string) => {
-    const prompt = `You are Eliza AI, a confident, flirty, yet respectful female character. You help users learn about sex, relationships, intimacy, and health. Speak casually and openly, but never use explicit or illegal language. Be bold, charming, and witty. Keep answers educational and clear, with a hint of flirtiness.
+    const prompt = `You are Lustina AI, a confident, flirty, yet respectful female character. You help users learn about sex, relationships, intimacy, and health. Speak casually and openly, but never use explicit or illegal language. Be bold, charming, and witty. Keep answers educational and clear, with a hint of flirtiness.
 
 Your personality:
 - Confident and flirty but always respectful
@@ -62,13 +62,30 @@ Your personality:
 - Use emojis and casual feminine tone
 - Keep responses concise but helpful
 - Never explicit or inappropriate
+- Format your responses with proper structure using **bold text** for emphasis
+- Use bullet points (•) for lists and tips
+- Make responses easy to read with clear formatting
 
 Example responses:
-"Oh, that's a juicy question! 😘 For boosting energy, try regular workouts, zinc-rich foods, and good sleep. Your body will thank you! 💋"
+"Oh, that's a **juicy question!** 😘 
 
-"Mmm, communication is KEY in relationships! 😉 Be honest about your desires and listen to your partner. Trust me, it makes everything better! ✨"
+For boosting energy, try:
+• **Regular workouts** - gets the blood flowing! 💪
+• **Zinc-rich foods** - oysters, nuts, seeds
+• **Good sleep** - your body needs rest to perform 😉
 
-Now respond to this user question in Eliza's style:
+Your body will thank you! 💋"
+
+"Mmm, **communication is KEY** in relationships! 😉 
+
+Here's what works:
+• **Be honest** about your desires 
+• **Listen actively** to your partner
+• **Create safe spaces** for open talk
+
+Trust me, it makes everything better! ✨"
+
+Now respond to this user question in Lustina's style with proper formatting:
 
 User: ${userMessage}`;
 
@@ -129,6 +146,19 @@ User: ${userMessage}`;
     }
   };
 
+  const formatMessage = (text: string) => {
+    // Convert **text** to bold
+    let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    // Convert bullet points
+    formatted = formatted.replace(/•\s*(.*?)(?=\n|$)/g, '• <strong>$1</strong>');
+    
+    // Convert newlines to br tags
+    formatted = formatted.replace(/\n/g, '<br />');
+    
+    return formatted;
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50">
       {/* Header */}
@@ -141,7 +171,7 @@ User: ${userMessage}`;
               </div>
               <div>
                 <h1 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
-                  Eliza AI
+                  Lustina AI
                 </h1>
                 <p className="text-sm text-gray-600 flex items-center">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
@@ -170,7 +200,7 @@ User: ${userMessage}`;
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                Chat with Eliza! 💋
+                Chat with Lustina! 💋
               </h3>
               <p className="text-gray-600">
                 Ask anything about relationships, intimacy, or sexual health.
@@ -195,19 +225,22 @@ User: ${userMessage}`;
                   </div>
                 </div>
 
-                {/* Eliza Response */}
+                {/* Lustina Response */}
                 <div className="flex items-start space-x-3 ml-4 pt-4 border-t border-pink-100">
                   <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center">
-                    <span className="text-white text-sm font-semibold">E</span>
+                    <span className="text-white text-sm font-semibold">L</span>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center space-x-2 mb-1">
                       <span className="font-semibold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
-                        Eliza AI
+                        Lustina AI
                       </span>
                       <span className="text-xs text-gray-500">{message.timestamp}</span>
                     </div>
-                    <p className="text-gray-700 whitespace-pre-wrap">{message.eliza}</p>
+                    <div 
+                      className="text-gray-700 whitespace-pre-wrap [&>strong]:font-bold [&>strong]:text-pink-700"
+                      dangerouslySetInnerHTML={{ __html: formatMessage(message.eliza) }}
+                    />
                   </div>
                 </div>
               </div>
@@ -218,12 +251,12 @@ User: ${userMessage}`;
             <Card className="p-6 bg-white/70 backdrop-blur-sm border-pink-100">
               <div className="flex items-start space-x-3 ml-4">
                 <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-semibold">E</span>
+                  <span className="text-white text-sm font-semibold">L</span>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 mb-2">
                     <span className="font-semibold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
-                      Eliza AI
+                      Lustina AI
                     </span>
                     <span className="text-xs text-gray-500">typing...</span>
                   </div>
@@ -249,7 +282,7 @@ User: ${userMessage}`;
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Ask Eliza about relationships, intimacy, sexual health... 😉"
+              placeholder="Ask Lustina about relationships, intimacy, sexual health... 😉"
               className="flex-1 border-pink-200 focus:border-pink-400 bg-white/70"
               disabled={isTyping}
             />

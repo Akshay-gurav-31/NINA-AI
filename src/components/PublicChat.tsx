@@ -200,7 +200,7 @@ User: ${userMessage}`;
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                Chat with Lustina! 💋
+                Chat with Lustina!❤️
               </h3>
               <p className="text-gray-600">
                 Ask anything about relationships, intimacy, or sexual health.

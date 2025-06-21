@@ -33,7 +33,7 @@ const ApiKeySetup = ({ onApiKeySet, onBack }: ApiKeySetupProps) => {
             <Key className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-gray-800 mb-2">Setup Gemini API</h1>
-          <p className="text-gray-600">Enter your Gemini API key to start chatting with Lustina AI</p>
+          <p className="text-gray-600">Enter your Gemini API key to start chatting with Lustina AI 🩷</p>
         </div>
         
         <form onSubmit={handleSubmit} className="space-y-6">

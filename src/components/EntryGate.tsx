@@ -19,10 +19,10 @@ const EntryGate = ({ onAccessGranted }: EntryGateProps) => {
     setIsLoading(true);
     
     setTimeout(() => {
-      if (password === 'FUCKYOUBABY') {
+      if (password === 'GingerBro') {
         toast({
           title: "Access Granted",
-          description: "Welcome to Lustina AI! 💋"
+          description: "Welcome to Lustina AI 🩷!"
         });
         onAccessGranted();
       } else {
